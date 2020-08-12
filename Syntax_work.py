@@ -41,9 +41,9 @@ class Textfile:
 
             # chercher les compléments pour chaque lemme verbal
             #dictionnaire avec tous les compléments
-            complements={'obj':0,'obl':0,'iobj':0,'ccomp':0,'xcomp':0}
+            
             for verb in verbes:
-
+                complements={'obj':0,'obl':0,'iobj':0,'ccomp':0,'xcomp':0}
                 for sent in doc.sents:
                     for tok in sent:
                         # skip spaces
@@ -51,7 +51,7 @@ class Textfile:
                         #si le mot est dépendant du verbe
                         if tok.head.text == verb:
                             for key in complements.keys():
-                                if tok.pos_==key:
+                                if tok.dep_==key:
                                     complements[key]+=1
                 for key in complements.keys():
                     # on calcule les pourcentages
